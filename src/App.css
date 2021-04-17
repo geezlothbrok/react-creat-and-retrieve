@@ -1,0 +1,45 @@
+.forms {
+  background-color: #cdeffb;
+  justify-content: center;
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  
+}
+
+input {
+  width: 400px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.formButton {
+  font-size: large;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 100px;
+  padding: 5px;
+  justify-content: center;
+  display: flex;
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+}
+
+.row {
+  background-color: #cdeffb;
+  padding: 20px;
+}
+
+button {
+  height: 30px;
+  border-radius: 10px;
+}
+
+.del {
+  background-color: red;
+  color: white;
+}
+
+.up {
+  background-color: yellowgreen;
+}
