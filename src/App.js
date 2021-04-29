@@ -17,6 +17,19 @@ function App() {
     let newUsers=users.filter((user) => user.id !==id);
     setUsers(newUsers);
   }
+
+  function updateUser (id, updateUserInfo) {
+    let newUsers = users.map((user) => {
+      if (user.id === id) {
+        return updateUserInfo;
+      }
+      return user;
+    });
+    setUsers(newUsers);
+    
+  }
+
+
   return (
     <div>
       <div className='container'>
@@ -26,7 +39,7 @@ function App() {
           </div>
         
           <div className='col-md-6'>
-            <UserList allUsers={users} delete={deleteUser}/>
+            <UserList allUsers={users} delete={deleteUser} updateUser={updateUser}/>
           </div>
       </div>
     </div>
