@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import UserForm from './components/UserForm';
 //import UserItems from './components/UserItems';
-import UserList from './components/UserList';
+import UserList from '../src/components/UserList'
 import {useState} from 'react';
 
 function App() {

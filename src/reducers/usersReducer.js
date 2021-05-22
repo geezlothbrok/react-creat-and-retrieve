@@ -1,10 +1,12 @@
 const initialState = {
-    users: [{name: 'Gideon', userID: '234567fg' , gender: 'Male'}]
+    users: []
 };
 
-const usersReducer = (state = 'initialState', action) => {
+const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD_USER":
+            console.log(action.payload)
+           return { ...state,users: [...state.users, action.payload]};
             
             break;
     
@@ -13,5 +15,6 @@ const usersReducer = (state = 'initialState', action) => {
     }
 
 };
+
 
 export default usersReducer;

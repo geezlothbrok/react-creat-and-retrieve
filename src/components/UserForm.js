@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import  addNewUser  from '../actions/userActions';
+import { connect } from 'react-redux';
 
 
 
@@ -24,7 +26,7 @@ function UserForm(props) {
 
         let userId = 10000 + Math.random() * 1000000;
         let user = { ...state, id: userId};
-        props.addUser(user);
+        props.addNewUser(user);
     }
     
     return (
@@ -63,4 +65,6 @@ function UserForm(props) {
     )
 };
 
-export default UserForm;
+const mapDispatchToProps = { addNewUser: addNewUser }
+
+export default connect (null, { addNewUser}) (UserForm);
