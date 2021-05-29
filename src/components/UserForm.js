@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import  addNewUser  from '../actions/userActions';
+import  {addNewUser}  from '../actions/userActions';
 import { connect } from 'react-redux';
 
 
@@ -67,4 +67,4 @@ function UserForm(props) {
 
 const mapDispatchToProps = { addNewUser: addNewUser }
 
-export default connect (null, { addNewUser}) (UserForm);
+export default connect (null, mapDispatchToProps) (UserForm);

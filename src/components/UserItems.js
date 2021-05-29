@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import {Modal} from 'react-bootstrap';
 import EditUserForm from './EditUserForm';
+import { connect } from 'react-redux';
+import { deleteUser } from '../actions/userActions';
 
 
 
@@ -23,7 +25,7 @@ function UserItems(props) {
                 <div className='col-md-4'>
                     <  button className='del' 
                     onClick={() => {
-                        props.delete(props.user.id);
+                        props.deleteUser(props.user.id);
                     }}> Delete</button>
 
 
@@ -37,7 +39,7 @@ function UserItems(props) {
                         <Modal.Body>
                             <EditUserForm 
                             user = {props.user}
-                            updateUser={props.updateUser}
+                            
                             hideModal={hideModal}/>
                         </Modal.Body>
                     </Modal>
@@ -47,4 +49,10 @@ function UserItems(props) {
     )
 };
 
-export default UserItems;
+let mapDispatchToProps = {
+    deleteUser
+};
+
+let mapStateToProps = () => {};
+
+export default connect(mapStateToProps, mapDispatchToProps) (UserItems);
