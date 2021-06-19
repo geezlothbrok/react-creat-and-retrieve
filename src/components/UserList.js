@@ -1,10 +1,15 @@
-import react from 'react'
+import React, { useEffect } from 'react'
 import UserItems from './UserItems';
 import { connect } from 'react-redux';
+import { getAllUsers} from '../actions/userActions';
 
 
 
 function UserList(props) {
+    useEffect(() => {
+        props.getAllUsers();
+    }, []);
+
     return(
         <div>
             {props.usersData.map((user) => (
@@ -15,7 +20,11 @@ function UserList(props) {
     )
 }
 function mapStateToProps (state) {
-    return {usersData:state.users}
+    return {usersData:state.users};
 }
 
-export default connect(mapStateToProps, {})(UserList);
+const mapDispatchToProps = {
+    getAllUsers,
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);
