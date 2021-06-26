@@ -1,53 +1,56 @@
 export function getAllUsers() {
   return (dispatch, state, { getFirestore }) => {
     const db = getFirestore();
-    db.collection("users")
-      .get()
-      .then((results) => {
+    db.collection("users").onSnapshot((results) => {
         let users = [];
         results.forEach((doc) => {
-          users.push(doc.data());
+          let user = doc.data();
+          user.id = doc.id;
+          users.push(user);
         });
 
         dispatch({
           type: "ADD_ALL_USERS",
           payload: users,
         });
-      })
-      .catch((err) => {
+      },
+      (err) => {
         console.log(err);
-      });
+      }
+      );
+      
   };
 }
 
 export function addNewUser(user) {
-  return (dispatch, state, { getFirestore }) => {
+  return async (dispatch, state, { getFirestore }) => {
     const db = getFirestore();
-    db.collection('users')
-      .add(user)
-      .then(() => {
-        
-        dispatch({
-          type: 'ADD_USER',
-          payload: user,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      await db.collection('users').add(user);
+    } catch (err) {
+      console.log(err);
+    }
   };
 }
 
 export function editUser(id, upadtedUser) {
-  return {
-    type: "EDIT_USER",
-    payload: { id: id, upadtedUserInfo: upadtedUser },
-  };
+  return async ( dispatch, state, { getFirestore }) => {
+    let db = getFirestore();
+    try {
+      await db.collection('users').doc(id).update(upadtedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export function deleteUser(id) {
-  return {
-    type: "DELETE_USER",
-    payload: id,
-  };
+  return async ( dispatch, state, { getFirestore }) => {
+    let db = getFirestore();
+    try {
+      await db.collection('users').doc(id).delete();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
