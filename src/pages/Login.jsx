@@ -19,7 +19,7 @@ function handleSubmit () {
                 <input type='text' name='email' value={credentials.email} onChange={handleOnChange}/>
                 <label>Password</label>
                 <input type='password' name='password' value={credentials.password} onChange={handleOnChange}/>
-                <button type='submit' onClick={handleSubmit}>Login</button>
+                <button type='button' onClick={handleSubmit}>Login</button>
             </form>
         </div>
     )

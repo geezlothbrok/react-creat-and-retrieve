@@ -18,8 +18,8 @@ function Signup(props) {
                 <label>Email</label>
                 <input type='text' name='email' value={credentials.email} onChange={handleOnChange}/>
                 <label>Password</label>
-                <input type='password' name='password' value={credentials.email} onChange={handleOnChange}/>
-                <button type='submit' onClick={handleSubmit}>Sign Up</button>
+                <input type='password' name='password' value={credentials.password} onChange={handleOnChange}/>
+                <button type='button' onClick={handleSubmit}>Sign Up</button>
             </form>
         </div>
     )
