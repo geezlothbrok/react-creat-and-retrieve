@@ -1,37 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import UserForm from './components/UserForm';
-//import UserItems from './components/UserItems';
-import UserList from '../src/components/UserList'
-import {useState} from 'react';
+import React from 'react';
+import {BrowserRouter, Route} from 'react-router-dom'
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
-function App() {
-
-  const [users, setUsers]= useState([]);
-
-  function addUser (user) {
-    setUsers([...users, user]);  
-  }
-
-  
-
-
+export default function App() {
   return (
     <div>
-      <div className='container'>
-        
-          <div className='col-md-6'>
-            <UserForm  addUser={addUser}/>
-          </div>
-        
-          <div className='col-md-6'>
-            <UserList allUsers={users} />
-          </div>
-      </div>
+      <BrowserRouter>
+        <Route exact path = "/" component ={Dashboard}></Route>
+        <Route path = "login" component ={Login}></Route>
+        <Route path = "signup" component ={Signup}></Route>
+      </BrowserRouter>
+      
     </div>
-    
-
-  );
+  )
 }
 
-export default App;
