@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {signup} from '../actions/authAction';
 import { connect} from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 function Signup(props) {
     const[credentials, Setcredentials] = useState({email:"", password:""})
@@ -11,6 +12,14 @@ function Signup(props) {
 
     function handleSubmit () {
         props.signup(credentials.email, credentials.password);
+    }
+
+    if (props.auth.isLoaded=== false) {
+        return <h1>Loading...</h1>;
+    }
+
+    if (props.auth.isEmpty === false) {
+        return <Redirect path ='/' />
     }
     return (
         <div>

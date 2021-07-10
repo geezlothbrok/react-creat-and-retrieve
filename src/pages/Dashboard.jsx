@@ -1,10 +1,11 @@
-
-
 import UserForm from '../components/UserForm';
-import UserList from '../components/UserList'
+import UserList from '../components/UserList';
 import {useState} from 'react';
+import { logout } from '../actions/authAction';
+import { connect } from 'react-redux';
 
-function Dashboard() {
+
+function Dashboard(props) {
 
   const [users, setUsers]= useState([]);
 
@@ -12,7 +13,9 @@ function Dashboard() {
     setUsers([...users, user]);  
   }
 
-  
+  function handleLogout() {
+    props.logout();
+  }
 
 
   return (
@@ -22,6 +25,7 @@ function Dashboard() {
           <div className='col-md-6'>
             <UserForm  addUser={addUser}/>
           </div>
+          <button type= 'button' onClick={handleLogout}>Logout</button>
         
           <div className='col-md-6'>
             <UserList allUsers={users} />
@@ -32,5 +36,6 @@ function Dashboard() {
 
   );
 }
+const mapDispatchToProps = { logout };
 
-export default Dashboard;
+export default connect(null, mapDispatchToProps) (Dashboard);
