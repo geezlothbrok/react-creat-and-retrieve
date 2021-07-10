@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {signup} from '../actions/authAction';
-import { connect} from 'react-redux';
+import React, { useState } from 'react';
+import { signup } from '../actions/authAction';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 function Signup(props) {
@@ -14,7 +14,7 @@ function Signup(props) {
         props.signup(credentials.email, credentials.password);
     }
 
-    if (props.auth.isLoaded=== false) {
+    if (props.auth.isLoaded === false) {
         return <h1>Loading...</h1>;
     }
 
@@ -33,5 +33,11 @@ function Signup(props) {
         </div>
     )
 }
+const mapStateToProps = (state)=> {
+    return {
+        auth: state.firebaseState.auth,
+    };
+};
+
 const mapDispatchToProps = { signup }
-export default connect (null, mapDispatchToProps)(Signup);
+export default connect (mapStateToProps, mapDispatchToProps)(Signup);
